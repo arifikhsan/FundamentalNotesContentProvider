@@ -2,6 +2,7 @@ package com.example.fundamentalmynotesapp
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.NoteAddUpdateActivity
@@ -11,10 +12,18 @@ import com.example.fundamentalmynotesapp.db.NoteHelper
 import com.example.fundamentalmynotesapp.entity.Note
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.async
+import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
     private lateinit var adapter: NoteAdapter
     private lateinit var noteHelper: NoteHelper
+
+    companion object {
+        private const val EXTRA_STATE = "EXTRA_STATE"
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,6 +43,38 @@ class MainActivity : AppCompatActivity() {
 
         noteHelper = NoteHelper.getInstance(applicationContext)
         noteHelper.open()
+
+
+        if (savedInstanceState == null) {
+            loadNotesAsync()
+        } else {
+            val list = savedInstanceState.getParcelableArrayList<Note>(EXTRA_STATE)
+            if (list != null) adapter.listNotes = list
+        }
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putParcelableArrayList(EXTRA_STATE, adapter.listNotes)
+    }
+
+    private fun loadNotesAsync() {
+        GlobalScope.launch(Dispatchers.Main) {
+            progressbar.visibility = View.VISIBLE
+            val deferredNotes = async(Dispatchers.IO) {
+                val cursor = noteHelper.queryAll()
+                MappingHelper.mapCursorToArrayList(cursor)
+            }
+            progressbar.visibility = View.INVISIBLE
+            val notes = deferredNotes.await()
+            if (notes.size > 0) {
+                adapter.listNotes = notes
+            } else {
+                adapter.listNotes = ArrayList()
+                showSnackbarMessage("Tidak ada data saat ini")
+            }
+
+        }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
