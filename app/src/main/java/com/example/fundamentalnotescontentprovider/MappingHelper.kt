@@ -2,6 +2,10 @@ package com.example.fundamentalnotescontentprovider
 
 import android.database.Cursor
 import com.example.fundamentalnotescontentprovider.db.DatabaseContract
+import com.example.fundamentalnotescontentprovider.db.DatabaseContract.NoteColumns.Companion.DATE
+import com.example.fundamentalnotescontentprovider.db.DatabaseContract.NoteColumns.Companion.DESCRIPTION
+import com.example.fundamentalnotescontentprovider.db.DatabaseContract.NoteColumns.Companion.TITLE
+import com.example.fundamentalnotescontentprovider.db.DatabaseContract.NoteColumns.Companion._ID
 import com.example.fundamentalnotescontentprovider.entity.Note
 
 object MappingHelper {
@@ -10,15 +14,27 @@ object MappingHelper {
 
         notesCursor?.apply {
             while (moveToNext()) {
-                val id = getInt(getColumnIndexOrThrow(DatabaseContract.NoteColumns._ID))
-                val title = getString(getColumnIndexOrThrow(DatabaseContract.NoteColumns.TITLE))
+                val id = getInt(getColumnIndexOrThrow(_ID))
+                val title = getString(getColumnIndexOrThrow(TITLE))
                 val description =
-                    getString(getColumnIndexOrThrow(DatabaseContract.NoteColumns.DESCRIPTION))
-                val date = getString(getColumnIndexOrThrow(DatabaseContract.NoteColumns.DATE))
+                    getString(getColumnIndexOrThrow(DESCRIPTION))
+                val date = getString(getColumnIndexOrThrow(DATE))
                 notesList.add(Note(id, title, description, date))
             }
         }
 
         return notesList
+    }
+
+    fun mapCursorToObject(notesCursor: Cursor?): Note {
+        val note = Note()
+        notesCursor?.apply {
+            moveToFirst()
+            val id = getInt(getColumnIndexOrThrow(_ID))
+            val title = getString(getColumnIndexOrThrow(TITLE))
+            val description = getString(getColumnIndexOrThrow(DESCRIPTION))
+            val date = getString(getColumnIndexOrThrow(DATE))
+        }
+        return note
     }
 }
