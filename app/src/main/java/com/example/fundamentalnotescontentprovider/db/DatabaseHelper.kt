@@ -1,9 +1,9 @@
-package com.example.fundamentalmynotesapp.db
+package com.example.fundamentalnotescontentprovider.db
 
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
-import com.example.fundamentalmynotesapp.db.DatabaseContract.NoteColumns.Companion.TABLE_NAME
+import com.example.fundamentalnotescontentprovider.db.DatabaseContract.NoteColumns.Companion.TABLE_NAME
 
 internal class DatabaseHelper(context: Context) :
     SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {

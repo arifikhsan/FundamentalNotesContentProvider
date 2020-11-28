@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Fundamental My Notes App</string>
+    <string name="app_name">Fundamental Notes Content Provider</string>
     <string name="title">Judul</string>
     <string name="description">Deskripsi</string>
     <string name="submit">Submit</string>

@@ -1,4 +1,4 @@
-package com.example.fundamentalmynotesapp
+package com.example.fundamentalnotescontentprovider
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,8 +8,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.NoteAddUpdateActivity
 import com.example.NoteAddUpdateActivity.Companion.EXTRA_NOTE
 import com.example.NoteAddUpdateActivity.Companion.EXTRA_POSITION
-import com.example.fundamentalmynotesapp.db.NoteHelper
-import com.example.fundamentalmynotesapp.entity.Note
+import com.example.fundamentalnotescontentprovider.db.NoteHelper
+import com.example.fundamentalnotescontentprovider.entity.Note
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.Dispatchers
@@ -83,9 +83,11 @@ class MainActivity : AppCompatActivity() {
         if (data != null) {
             when (requestCode) {
                 NoteAddUpdateActivity.REQUEST_ADD -> if (resultCode == NoteAddUpdateActivity.RESULT_ADD) {
-                    val note = data.getParcelableExtra<Note>(NoteAddUpdateActivity.EXTRA_NOTE)
+                    val note = data.getParcelableExtra<Note>(EXTRA_NOTE)
 
-                    adapter.addItem(note)
+                    note?.let {
+                        adapter.addItem(it)
+                    }
                     rv_notes.smoothScrollToPosition(adapter.itemCount - 1)
 
                     showSnackbarMessage("Satu item berhasil ditambahkan")
@@ -97,8 +99,10 @@ class MainActivity : AppCompatActivity() {
                             val note = data.getParcelableExtra<Note>(EXTRA_NOTE)
                             val position = data.getIntExtra(EXTRA_POSITION, 0)
 
-                            adapter.updateItem(position, note)
-                            rv_notes.smoothScrollToPosition(position)
+                            note?.let {
+                                adapter.updateItem(position, it)
+                                rv_notes.smoothScrollToPosition(position)
+                            }
 
                             showSnackbarMessage("Satu item berhasil diubah")
                         }

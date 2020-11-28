@@ -1,4 +1,4 @@
-package com.example.fundamentalmynotesapp
+package com.example.fundamentalnotescontentprovider
 
 import android.app.Activity
 import android.content.Intent
@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.NoteAddUpdateActivity
-import com.example.fundamentalmynotesapp.entity.Note
+import com.example.fundamentalnotescontentprovider.entity.Note
 import kotlinx.android.synthetic.main.item_note.view.*
 
 class NoteAdapter(private val activity: Activity) :

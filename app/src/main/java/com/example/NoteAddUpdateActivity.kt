@@ -8,11 +8,11 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.fundamentalmynotesapp.R
-import com.example.fundamentalmynotesapp.db.DatabaseContract
-import com.example.fundamentalmynotesapp.db.DatabaseContract.NoteColumns.Companion.DATE
-import com.example.fundamentalmynotesapp.db.NoteHelper
-import com.example.fundamentalmynotesapp.entity.Note
+import com.example.fundamentalnotescontentprovider.R
+import com.example.fundamentalnotescontentprovider.db.DatabaseContract
+import com.example.fundamentalnotescontentprovider.db.DatabaseContract.NoteColumns.Companion.DATE
+import com.example.fundamentalnotescontentprovider.db.NoteHelper
+import com.example.fundamentalnotescontentprovider.entity.Note
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlinx.android.synthetic.main.activity_note_add_update.*
 import java.text.SimpleDateFormat

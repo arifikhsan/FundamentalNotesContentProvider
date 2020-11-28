@@ -1,4 +1,4 @@
-package com.example.fundamentalmynotesapp
+package com.example.fundamentalnotescontentprovider
 
 import android.view.View
 
