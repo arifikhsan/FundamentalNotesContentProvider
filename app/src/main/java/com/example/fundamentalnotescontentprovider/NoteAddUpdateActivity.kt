@@ -1,4 +1,4 @@
-package com.example
+package com.example.fundamentalnotescontentprovider
 
 import android.content.ContentValues
 import android.content.Intent
@@ -9,12 +9,10 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.fundamentalnotescontentprovider.MappingHelper
-import com.example.fundamentalnotescontentprovider.R
+import com.example.fundamentalnotescontentprovider.adapter.MappingHelper
 import com.example.fundamentalnotescontentprovider.db.DatabaseContract
 import com.example.fundamentalnotescontentprovider.db.DatabaseContract.NoteColumns.Companion.CONTENT_URI
 import com.example.fundamentalnotescontentprovider.db.DatabaseContract.NoteColumns.Companion.DATE
-import com.example.fundamentalnotescontentprovider.db.NoteHelper
 import com.example.fundamentalnotescontentprovider.entity.Note
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlinx.android.synthetic.main.activity_note_add_update.*
@@ -114,7 +112,7 @@ class NoteAddUpdateActivity : AppCompatActivity(), View.OnClickListener {
                 // Gunakan uriWithId untuk update
                 // content://com.arifikhsanudin.mynotesapp/note/id
 
-                val result = contentResolver.update(uriWithId, values, null, null).toLong()
+                contentResolver.update(uriWithId, values, null, null).toLong()
                 Toast.makeText(this, "Satu item berhasil diedit", Toast.LENGTH_SHORT).show()
                 finish()
 //

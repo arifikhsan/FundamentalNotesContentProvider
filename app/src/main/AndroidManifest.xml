@@ -29,7 +29,7 @@
             android:writePermission="com.example.fundamentalnotescontentprovider.WRITE_DATABASE"
             tools:ignore="ExportedContentProvider" />
 
-        <activity android:name="com.example.NoteAddUpdateActivity" />
+        <activity android:name=".NoteAddUpdateActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

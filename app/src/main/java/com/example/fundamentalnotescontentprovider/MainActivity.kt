@@ -8,11 +8,11 @@ import android.os.HandlerThread
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.NoteAddUpdateActivity
-import com.example.NoteAddUpdateActivity.Companion.EXTRA_NOTE
-import com.example.NoteAddUpdateActivity.Companion.EXTRA_POSITION
+import com.example.fundamentalnotescontentprovider.NoteAddUpdateActivity.Companion.EXTRA_NOTE
+import com.example.fundamentalnotescontentprovider.NoteAddUpdateActivity.Companion.EXTRA_POSITION
+import com.example.fundamentalnotescontentprovider.adapter.MappingHelper
+import com.example.fundamentalnotescontentprovider.adapter.NoteAdapter
 import com.example.fundamentalnotescontentprovider.db.DatabaseContract.NoteColumns.Companion.CONTENT_URI
-import com.example.fundamentalnotescontentprovider.db.NoteHelper
 import com.example.fundamentalnotescontentprovider.entity.Note
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_main.*

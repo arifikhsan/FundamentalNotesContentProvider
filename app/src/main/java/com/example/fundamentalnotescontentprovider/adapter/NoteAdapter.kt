@@ -1,4 +1,4 @@
-package com.example.fundamentalnotescontentprovider
+package com.example.fundamentalnotescontentprovider.adapter
 
 import android.app.Activity
 import android.content.Intent
@@ -6,7 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.NoteAddUpdateActivity
+import com.example.fundamentalnotescontentprovider.CustomOnItemClickListener
+import com.example.fundamentalnotescontentprovider.NoteAddUpdateActivity
+import com.example.fundamentalnotescontentprovider.R
 import com.example.fundamentalnotescontentprovider.entity.Note
 import kotlinx.android.synthetic.main.item_note.view.*
 
@@ -62,13 +64,13 @@ class NoteAdapter(private val activity: Activity) :
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NoteAdapter.NoteViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NoteViewHolder {
         return NoteViewHolder(
             LayoutInflater.from(parent.context).inflate(R.layout.item_note, parent, false)
         )
     }
 
-    override fun onBindViewHolder(holder: NoteAdapter.NoteViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: NoteViewHolder, position: Int) {
         holder.bind(listNotes[position])
     }
 
