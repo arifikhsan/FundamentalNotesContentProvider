@@ -4,7 +4,7 @@ import android.net.Uri
 import android.provider.BaseColumns
 
 object DatabaseContract {
-    const val AUTHORITY = "com.arifikhsanudin.mynotesapp"
+    const val AUTHORITY = "com.example.fundamentalnotescontentprovider"
     const val SCHEME = "content"
 
     class NoteColumns : BaseColumns {

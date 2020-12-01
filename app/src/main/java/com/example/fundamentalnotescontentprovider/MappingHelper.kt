@@ -27,13 +27,14 @@ object MappingHelper {
     }
 
     fun mapCursorToObject(notesCursor: Cursor?): Note {
-        val note = Note()
+        var note = Note()
         notesCursor?.apply {
             moveToFirst()
             val id = getInt(getColumnIndexOrThrow(_ID))
             val title = getString(getColumnIndexOrThrow(TITLE))
             val description = getString(getColumnIndexOrThrow(DESCRIPTION))
             val date = getString(getColumnIndexOrThrow(DATE))
+            note = Note(id, title, description, date)
         }
         return note
     }
