@@ -9,7 +9,7 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.fundamentalnotescontentprovider.adapter.MappingHelper
+import com.example.fundamentalnotescontentprovider.helper.MappingHelper
 import com.example.fundamentalnotescontentprovider.db.DatabaseContract
 import com.example.fundamentalnotescontentprovider.db.DatabaseContract.NoteColumns.Companion.CONTENT_URI
 import com.example.fundamentalnotescontentprovider.db.DatabaseContract.NoteColumns.Companion.DATE

@@ -1,4 +1,4 @@
-package com.example.fundamentalnotescontentprovider.adapter
+package com.example.fundamentalnotescontentprovider.helper
 
 import android.database.Cursor
 import com.example.fundamentalnotescontentprovider.db.DatabaseContract.NoteColumns.Companion.DATE

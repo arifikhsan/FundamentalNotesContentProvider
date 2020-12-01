@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.fundamentalnotescontentprovider.NoteAddUpdateActivity.Companion.EXTRA_NOTE
 import com.example.fundamentalnotescontentprovider.NoteAddUpdateActivity.Companion.EXTRA_POSITION
-import com.example.fundamentalnotescontentprovider.adapter.MappingHelper
+import com.example.fundamentalnotescontentprovider.helper.MappingHelper
 import com.example.fundamentalnotescontentprovider.adapter.NoteAdapter
 import com.example.fundamentalnotescontentprovider.db.DatabaseContract.NoteColumns.Companion.CONTENT_URI
 import com.example.fundamentalnotescontentprovider.entity.Note
